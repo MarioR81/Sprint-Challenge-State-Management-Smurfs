@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import "./App.css";
 
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+
 import {smurfReducer as reducer} from '../reducers/smurfReducer';
 import SmurfForm from './SmurfForm';
+import SmurfsList from "./SmurfsList";
+import SubmitForm from './SubmitForm';
 
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 class App extends Component {
   render() {
     return (
@@ -18,6 +22,8 @@ class App extends Component {
           <div>Start inside of your `src/index.js` file!</div>
           <div>Have fun!</div> */}
           <SmurfForm />
+          <SmurfsList />
+          <SubmitForm/>
 
         </div>
       </Provider>
