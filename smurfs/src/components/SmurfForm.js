@@ -1,9 +1,29 @@
 import React from 'react';
+import {connect} from 'react-redux'
+
+import {getData} from '../actions';
 
 const SmurfForm = props => {
-    return <>
-    <button>Get the Smurfs!</button>
+
+    const handleGetData = e => {
+        e.preventDefault();
+        props.getData();
+    }
+    return (
+    <>
+    {props.isFetchingData ? (
+        <div>We are fetching Data!</div>
+    ) : (
+        <button onClick={handleGetData}>Get the Smurfs!</button>
+    )}
     </>
+    );
 };
 
-export default SmurfForm;
+const mapStateToProps = state => {
+    return {
+        isFetchingData: state.isFetchingData
+    };
+};
+
+export default connect(mapStateToProps, {getData})(SmurfForm);

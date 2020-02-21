@@ -5,13 +5,13 @@ const initialState = {
     isFetchingData: false
 };
 
-export const smurfReducer = (state=initialState, action) => {
+export const smurfReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_DATA:
             return {
                 ...state,
                 isFetchingData: true
-            };
-            defualt: return state;
+            }
+            default: return state;
     }
-}
+};
